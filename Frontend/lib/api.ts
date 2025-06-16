@@ -19,9 +19,10 @@ export class DocumentAssistantAPI {
     return response.json()
   }
 
-  static async askQuestion(question: string): Promise<QueryResponse> {
+  static async askQuestion(question: string , sessionId : string): Promise<QueryResponse> {
     const formData = new FormData()
     formData.append("question", question)
+    formData.append("session_id", sessionId)
 
     const response = await fetch(`${API_BASE_URL}/ask`, {
       method: "POST",
@@ -49,8 +50,26 @@ export class DocumentAssistantAPI {
     throw new Error(`Reset failed: ${response.statusText}`)
   }
 
+    return response.json()
+  }
+
+
+  static async summarizeDocument(sessionId: string): Promise<{ summary: string }> {
+  const formData = new FormData()
+  formData.append("session_id", sessionId)
+
+  const response = await fetch(`${API_BASE_URL}/summarize`, {
+    method: "POST",
+    body: formData,
+  })
+
+  if (!response.ok) {
+    throw new Error(`Summarization failed: ${response.statusText}`)
+  }
+
   return response.json()
-}
+  }
+
 
 }
 

@@ -54,6 +54,8 @@ export function DocumentUpload({ file, isUploading, uploadSuccess, onFileChange,
               <br />
               File Type : {uploadSuccess.filetype} 
               <br />
+              Document ID : {uploadSuccess.doc_id} 
+              <br />
               Chunks created: {uploadSuccess.chunks}
             </AlertDescription>
           </Alert>

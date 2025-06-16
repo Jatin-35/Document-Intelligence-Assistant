@@ -12,6 +12,7 @@ export function useDocumentAssistant() {
     isUploading: false,
     isAsking: false,
     uploadSuccess: null,
+    doc_id: null, // ✅ Add this here
     error: null,
   })
 
@@ -20,6 +21,9 @@ export function useDocumentAssistant() {
       ...prev,
       file,
       uploadSuccess: null,
+      doc_id: null, // ✅ Reset old doc_id when new file is picked
+      response: null,
+      summary: null,
       error: null,
     }))
   }
@@ -34,15 +38,29 @@ export function useDocumentAssistant() {
 
   const uploadFile = async () => {
     if (!state.file) {
-      setState((prev) => ({ ...prev, error: "Please select a file to upload" }))
+      setState((prev) => ({
+        ...prev,
+        error: "Please select a file to upload",
+      }))
       return
     }
 
-    setState((prev) => ({ ...prev, isUploading: true, error: null }))
+    setState((prev) => ({
+      ...prev,
+      isUploading: true,
+      error: null,
+    }))
 
     try {
       const uploadSuccess = await DocumentAssistantAPI.uploadFile(state.file)
-      setState((prev) => ({ ...prev, uploadSuccess, isUploading: false }))
+      setState((prev) => ({
+        ...prev,
+        uploadSuccess,
+        doc_id: uploadSuccess.doc_id, // ✅ Set new doc_id
+        question: "",
+        response: null,
+        isUploading: false,
+      }))
     } catch (error) {
       setState((prev) => ({
         ...prev,
@@ -54,19 +72,75 @@ export function useDocumentAssistant() {
 
   const askQuestion = async () => {
     if (!state.question.trim()) {
-      setState((prev) => ({ ...prev, error: "Please enter a question" }))
+      setState((prev) => ({
+        ...prev,
+        error: "Please enter a question",
+      }))
       return
     }
 
-    setState((prev) => ({ ...prev, isAsking: true, error: null }))
+    const sessionId = state.doc_id // ✅ Now directly from state
+    if (!sessionId) {
+      setState((prev) => ({
+        ...prev,
+        error: "No document found. Please upload a file first.",
+      }))
+      return
+    }
+
+    setState((prev) => ({
+      ...prev,
+      isAsking: true,
+      error: null,
+    }))
 
     try {
-      const response = await DocumentAssistantAPI.askQuestion(state.question)
-      setState((prev) => ({ ...prev, response, isAsking: false }))
+      const response = await DocumentAssistantAPI.askQuestion(state.question, sessionId)
+      setState((prev) => ({
+        ...prev,
+        response,
+        isAsking: false,
+      }))
     } catch (error) {
       setState((prev) => ({
         ...prev,
         error: "Failed to get answer. Please try again.",
+        isAsking: false,
+      }))
+    }
+  }
+
+  const summarizeDocument = async () => {
+    const sessionId = state.doc_id // ✅ Always use this
+    if (!sessionId) {
+      setState((prev) => ({
+        ...prev,
+        error: "No document found. Please upload a file first.",
+      }))
+      return
+    }
+
+    setState((prev) => ({
+      ...prev,
+      isAsking: true,
+      error: null,
+    }))
+
+    try {
+      const response = await DocumentAssistantAPI.summarizeDocument(sessionId)
+      setState((prev) => ({
+        ...prev,
+        response: {
+          answer: response.summary,
+          sources: [],
+        },
+        summary: response.summary, 
+        isAsking: false,
+      }))
+    } catch (error) {
+      setState((prev) => ({
+        ...prev,
+        error: "Failed to summarize the document. Please try again.",
         isAsking: false,
       }))
     }
@@ -79,5 +153,7 @@ export function useDocumentAssistant() {
     clearError,
     uploadFile,
     askQuestion,
+    summarizeDocument,
+    summary: state.summary,
   }
 }

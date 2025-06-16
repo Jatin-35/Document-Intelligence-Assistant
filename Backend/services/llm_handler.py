@@ -79,7 +79,6 @@ def ask_openrouter(prompt: str) -> str:
         raise e
 
 
-from utils.logger import logger
 
 def build_prompt(context_chunks: list[str], question: str, memory: str = "") -> str:
     try:

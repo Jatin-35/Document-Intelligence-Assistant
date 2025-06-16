@@ -4,9 +4,9 @@ from services.embedder import get_embeddings
 from db.chroma_store import store_chunks
 import uuid
 
-def process_document(file_path: str, file_type: str):
+def process_document(file_path: str, file_type: str , session_id : str):
     try:
-        doc_id = str(uuid.uuid4())
+        
 
         text = extract_text(file_path, file_type)
         if not text:
@@ -20,10 +20,10 @@ def process_document(file_path: str, file_type: str):
         if embeddings is None or len(embeddings) != len(chunks):
             raise ValueError("Embedding generation failed or mismatched with chunks.")
 
-        store_chunks(chunks, embeddings, doc_id)
+        store_chunks(chunks, embeddings, session_id)
 
         return {
-            "doc_id": doc_id,
+            "doc_id": session_id,
             "num_chunks": len(chunks)
         }
 

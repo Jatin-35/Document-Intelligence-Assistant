@@ -1,8 +1,100 @@
 {
-  "default": [
+  "ee69c128-aa4f-4c3f-9212-e98400e32448": [
     [
-      "Hii",
-      "Hello! I'm your document assistant. I'm here to help with your questions. What's on your mind? Want to know more about the project, its requirements, or something specific?"
+      "What is this about",
+      "This is about a educational platform or app called Edusphere that is designed specifically for kids with Down syndrome. It aims to teach them various essential life skills, such as learning festivals, everyday greetings, birthdays, traffic signals, and helpline numbers, in a fun and interactive way using visual elements, animations, voice prompts, and games. The platform is designed to promote independence, confidence, and emotional understanding in children with Down syndrome."
+    ]
+  ],
+  "c0741cb0-14a3-4509-a63e-86e3d427f7eb": [
+    [
+      "What is this about",
+      "This is about an educational platform designed specifically for children with Down syndrome. It focuses on practical, real-life situations and uses visual, vocal, and interactive features to make learning fun and accessible."
+    ],
+    [
+      "What is this about",
+      "I apologize, but it seems like there was an error on my end. I'm a large language model, I don't have the ability to retain information about previous interactions. Each time you interact with me, it's a new conversation.\n\nIf you could provide more context or rephrase your question, I'll do my best to help."
+    ]
+  ],
+  "7c49c92d-c789-4f1d-b272-cf597df321d4": [
+    [
+      "What is this about",
+      "This is about a task submission for a Data Analyst Internship, specifically Task 6: Sales Trend Analysis Using Aggregations. The task involves analyzing monthly revenue and order volume using a dataset called \"online_sales\" containing an \"orders\" table with columns \"order_date\", \"amount\", and \"product_id\". The task requires submitting a SQL script and results table using PostgreSQL, MySQL, or SQLite, and following specific guidelines for submission on GitHub."
+    ]
+  ],
+  "5a2e6011-7013-4eb8-8300-5b421bf106d9": [
+    [
+      "What is this about",
+      "This document is about a learning platform or application called Edusphere, specifically designed for children with Down syndrome. It focuses on teaching practical, real-life skills and concepts in a fun and interactive way, aiming to promote independence, confidence, and emotional understanding."
+    ]
+  ],
+  "459ebf43-8eb4-4220-873b-ec5aba28cee6": [
+    [
+      "What is this about",
+      "This document is about an educational platform, specifically designed for children with Down syndrome. It aims to teach them various life skills, such as understanding emotions, learning festivals, birthdates, emergency contact numbers, and everyday greetings, in a fun, interactive, and visual way. The platform is designed to promote independence, boost confidence, and foster emotional understanding."
+    ]
+  ],
+  "384c214c-ec70-4c43-8fe0-b3850c50822d": [
+    [
+      "What is this about",
+      "This project is about building a Document Intelligence Assistant, a system that can ingest various document types, extract and chunk text content, generate embeddings, and store documents in a vector database. It also includes a RAG (Retrieval-Augmented Generation) implementation for semantic search and question-answering, as well as a simple web interface for uploading documents and interacting with the system through a chat-like Q&A interface."
+    ]
+  ],
+  "ff28070d-4a71-466a-b1b5-002fce257d04": [
+    [
+      "What is this Document about",
+      "This document is about a project called \"Document Intelligence Assistant\" which aims to build a system that can ingest various document types, extract and chunk text content, generate embeddings, and store documents in a vector database. The system should also implement semantic search, a question-answering system, and a web interface with features like document upload, chat-like Q&A, and display of relevant document chunks with answers."
+    ],
+    [
+      "What is this Document about",
+      "This document is about a \"Document Intelligence Assistant\" project, which aims to build a system that can ingest various document types, extract and chunk text content, generate embeddings, and store documents in a vector database. The system should also implement semantic search, a question-answering system, and a web interface with features like document upload, chat-like Q&A, and display of relevant document chunks with answers."
+    ]
+  ],
+  "f85734f6-52bb-40d7-9326-4a2157a4b0fb": [
+    [
+      "What is this about",
+      "This text is about an educational app or platform called EduSphere, which is designed for children with Down syndrome. The app includes various modules and features that aim to promote independence, self-confidence, and learning in a fun and engaging way."
+    ]
+  ],
+  "bda8426f-23d7-49c7-9cf6-3ed1ec78017b": [
+    [
+      "What is this about",
+      "This is about an educational app or platform called EduSphere, designed for children with Down syndrome. The platform includes various modules and features that aim to make learning fun, interactive, and easy to understand, covering topics such as everyday greetings, helpline numbers, festivals, birthdays, road safety, technology, and mood tracking, with the ultimate goal of increasing independence and self-confidence."
+    ]
+  ],
+  "37d3ef98-126e-43ac-8659-d5c56949d63c": [
+    [
+      "What is this document about",
+      "This document is about Edusphere, an educational platform that aims to help children with Down syndrome learn and develop essential life skills, such as understanding emotions, recognizing traffic signals, and using technology, in a way that is tailored to their unique learning needs and styles."
+    ]
+  ],
+  "dd7b36a4-8416-4d8d-809a-0ac40c01effb": [
+    [
+      "What is this document about",
+      "This document is about a Backend Engineering Internship at proPAL AI, where the intern is tasked to develop a voice AI agent using Livekit that can conduct voice-based conversations with customers. The agent should be capable of speech-to-text, text generation, and text-to-speech conversions, while also logging metrics such as latency and delay."
+    ]
+  ],
+  "490a677f-0296-4d03-922a-493aeab9f548": [
+    [
+      "What is this document about",
+      "This document appears to be a student's academic transcript or grade card, detailing their performance in various semesters (III, IV, V, and VI) of their undergraduate program (B.Tech. in Computer Science and Engineering) at Shri Ramdeobaba College of Engineering and Management, Nagpur."
+    ]
+  ],
+  "60a005df-3c19-46d6-82c2-45ed9c0f5188": [
+    [
+      "What is this document about",
+      "This document appears to be about a Data Analyst Internship task, specifically Task 5, which involves conducting Exploratory Data Analysis (EDA) on a dataset, such as the Titanic dataset. The task requires the use of Python tools like Pandas, Seaborn, and Matplotlib to extract insights and visualize the data. The document provides guidelines for completing the task, submitting the work, and answering potential interview questions related to EDA."
+    ]
+  ],
+  "d99c20ca-7b01-4519-ae86-bce12883a8d6": [
+    [
+      "What is this about",
+      "This document is about an educational platform called Edusphere, which is designed specifically for children with Down syndrome. The platform aims to teach them essential life skills, such as understanding traffic signals, recognizing festivals, and expressing their feelings, in a way that is tailored to their unique learning styles and needs."
+    ]
+  ],
+  "120aa8d1-5d50-438c-90d1-39ab3520ff9a": [
+    [
+      "What is this about",
+      "This document is about a task assignment for a Data Analyst Internship, specifically Task 5: Exploratory Data Analysis (EDA). The task involves using Python with Pandas, Matplotlib, and Seaborn to extract insights from a dataset (in this case, the Titanic dataset) and submitting a Jupyter Notebook and a PDF report of findings."
     ]
   ]
 }

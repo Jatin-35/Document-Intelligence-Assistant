@@ -4,6 +4,8 @@ export interface Source {
 }
 
 export interface QueryResponse {
+  session_id : string
+  question : string
   answer: string
   sources: Source[]
 }
@@ -12,6 +14,7 @@ export interface UploadResponse {
   status : string
   file: string
   filetype : string
+  doc_id : string
   chunks: number
 }
 
@@ -27,8 +30,10 @@ export interface DocumentAssistantState {
   file: File | null
   question: string
   response: QueryResponse | null
+  doc_id: string | null
   isUploading: boolean
   isAsking: boolean
   uploadSuccess: UploadResponse | null
   error: string | null
+  summary?: string | null
 }

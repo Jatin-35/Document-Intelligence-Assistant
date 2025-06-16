@@ -7,6 +7,7 @@ import { QuestionForm } from "@/components/question-form"
 import { ResponseDisplay } from "@/components/response-display"
 import { useDocumentAssistant } from "@/hooks/use-document-assistant"
 import { ResetMemoryButton } from "@/components/reset-memory-button"
+import { SummarizeButton } from "@/components/summarize-button"
 
 export default function DocumentAssistant() {
   const {
@@ -48,7 +49,11 @@ export default function DocumentAssistant() {
         {/* Question Section */}
         <QuestionForm question={question} isAsking={isAsking} onQuestionChange={setQuestion} onAsk={askQuestion} />
 
-        <ResetMemoryButton sessionId="default" />
+        <div className="flex flex-wrap justify-center gap-4 mt-4">
+             <SummarizeButton uploadSuccess={uploadSuccess} />
+        </div>
+
+
 
         {/* Error Alert */}
         {error && (
@@ -59,6 +64,7 @@ export default function DocumentAssistant() {
 
         {/* Response Section */}
         {response && <ResponseDisplay response={response} />}
+
       </div>
     </div>
   )
