@@ -4,21 +4,30 @@ import requests
 from dotenv import load_dotenv
 from groq import Groq
 from utils.logger import logger
+import time
 
 load_dotenv()
+
+
 
 def ask_llm(prompt: str) -> str:
     try:
         logger.info("Trying Groq API...")
-        return ask_groq(prompt)
+        start = time.time()
+        response = ask_groq(prompt)
+        if time.time() - start > 2:  # If Groq takes more than 5 seconds
+            raise Exception("GroqTooSlow")
+        return response
     except Exception as e:
-        logger.error(f"Groq failed: {e}")
+        logger.warning(f"Groq failed or was too slow: {e}")
         try:
             logger.info("Falling back to OpenRouter...")
             return ask_openrouter(prompt)
         except Exception as ex:
             logger.error(f"OpenRouter failed too: {ex}")
             return "Error: Both LLM APIs failed."
+
+
 
 def ask_groq(prompt: str) -> str:
     try:
@@ -37,16 +46,21 @@ def ask_groq(prompt: str) -> str:
             model="llama3-70b-8192",
             stream=False
         )
+
         logger.info("Groq response received")
         return chat_completion.choices[0].message.content
 
     except Exception as e:
+        # Detect rate limit or throttle response
         if hasattr(e, "status_code") and e.status_code == 429:
-            logger.warning("Groq rate limit hit (429), triggering fallback")
+            logger.warning("Groq rate limit hit (429) — skipping retry and triggering fallback.")
+            raise Exception("RateLimited")  # Custom trigger for fallback
+        if "Too Many Requests" in str(e):
+            logger.warning("Groq returned 'Too Many Requests' — triggering fallback.")
             raise Exception("RateLimited")
-        else:
-            logger.error(f"Groq error: {str(e)}")
-            raise e
+        logger.error(f"Groq error: {str(e)}")
+        raise e
+
 
 def ask_openrouter(prompt: str) -> str:
     try:

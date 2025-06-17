@@ -9,7 +9,7 @@ collection = client.get_collection("document_chunks")
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-def retrieve_relevant_chunks(query: str, session_id: str, k: int = 10) -> list[dict]:
+def retrieve_relevant_chunks(query: str, session_id: str, k: int = 20) -> list[dict]:
     try:
         query_embedding = model.encode([query])[0]
 

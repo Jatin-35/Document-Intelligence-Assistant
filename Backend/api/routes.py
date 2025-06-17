@@ -88,13 +88,13 @@ async def ask_question(
 
 
 @router.post("/summarize")
-async def summarize_document(session_id : str = Form(...)):
+async def summarize_document(session_id: str = Form(...)):
     try:
         chunks = get_all_chunks(session_id=session_id)
         if not chunks:
             return {"summary": "No document chunks available to summarize."}
 
-        # Configurable chunk filtering
+        # 🔍 Filter out small or meaningless chunks
         MIN_CHUNK_LENGTH = 50
         chunk_limit = min(len(chunks), 10)
         meaningful_chunks = [c for c in chunks if len(c.strip()) > MIN_CHUNK_LENGTH][:chunk_limit]
@@ -104,22 +104,29 @@ async def summarize_document(session_id : str = Form(...)):
 
         joined_context = "\n\n".join(meaningful_chunks)
 
-        # Dynamic prompt adjustment
+        # 🧠 Dynamic prompt construction
         if len(meaningful_chunks) < 5:
             prompt = (
-                "The document contains limited content. Summarize it into as many clear bullet points as possible:"
-                f"\n\n{joined_context}"
+                "The document contains limited content. Summarize it into clear, well-structured markdown bullet points:\n"
+                "- Use `- **Title**: description` format where applicable.\n\n"
+                f"{joined_context}"
             )
         else:
             prompt = (
-                "Can you summarize the following document into 7 clear and concise bullet points?\n\n"
+                "You are an expert technical writer. Summarize the following document using exactly 7 clear, concise, and well-formatted bullet points.\n\n"
                 f"{joined_context}\n\n"
-                "Be informative and focus on the document's purpose, contributions, and key insights."
+                "📝 Instructions:\n"
+                "- Do not include any introductory sentences like 'Here's the summary'.\n"
+                "- Format each bullet using Markdown as: `- **Title**: Description...`\n"
+                "- Emphasize the document's **purpose**, **problem**, **key contributions**, **methods**, **features**, **impact**, and **conclusion**.\n"
+                "- Avoid casual tone, opinions, or unnecessary filler. Just informative points.\n"
+                "- Begin immediately with the first bullet point."
             )
 
-        summary = ask_llm(prompt)
-        
-        # Store it
+        # 🔁 Ask the LLM
+        summary = ask_llm(prompt).strip().lstrip("Summary:").strip()
+
+        # 💾 Store summary for reuse
         store_summary(session_id, summary)
 
         return {"summary": summary}
@@ -128,6 +135,7 @@ async def summarize_document(session_id : str = Form(...)):
         logger.error(f"Summarization failed for session_id={session_id}: {e}")
         logger.debug(f"Chunks: {chunks}")
         raise HTTPException(status_code=500, detail="Failed to summarize document.")
+
 
      
     
