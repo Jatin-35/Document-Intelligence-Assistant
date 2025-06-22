@@ -6,7 +6,7 @@ A smart web-based assistant that allows users to upload documents (`PDF`, `DOCX`
 
 ## 📁 Folder Structure
 
-### 🧠 Backend Folder Structure (/Backend)
+### 🧠 Backend Folder Structure (/Backend) 
 ```
 Backend/
 ├── api/
