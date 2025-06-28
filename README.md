@@ -12,7 +12,7 @@ Backend/
 ├── api/
 │   └── routes.py                    # FastAPI route definitions (upload, ask, summarize, reset)
 │
-├── db/
+├── db/ 
 │   └── chroma_store.py              # ChromaDB vector store setup and operations
 │
 ├── services/
