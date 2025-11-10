@@ -202,7 +202,7 @@ npx shadcn-ui@latest add button
 ---
 
 👨‍💻 Author
-Developed  by [Jatin Jasrotia](https://github.com/Jatin-35)
+Developed  by [Jatin Jasrotia](https://github.com/Jatin-35), Ankitkumar Patel, Madhav Gupta
 
 
 
