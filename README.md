@@ -199,8 +199,9 @@ This project does not rely on any external or pre-built datasets. All data is pr
 - File size varies depending on user uploads.
 - The system is optimized to handle both small and large documents using chunking and semantic indexing.
 
+---
 
-### **Preprocessing Steps Applied**
+## 🧾 **Preprocessing Steps Applied**
 Each uploaded document follows a structured preprocessing pipeline:
 
 #### **1. Text Extraction**
