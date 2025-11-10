@@ -119,6 +119,10 @@ Frontend/
 ### Backend Setup (FastAPI + ChromaDB + LLM APIs)
 
 ```bash
+# Step 0: Cloning instructions
+git clone https://github.com/Jatin-35/Document-Intelligence-Assistant.git
+cd Document-Intelligence-Assistant
+
 # Step 1: Create a virtual environment using UV (faster than pip)
 uv venv .venv
 
@@ -178,6 +182,62 @@ npx shadcn-ui@latest init
 npx shadcn-ui@latest add button
 ```
  - Libraries used: next, tailwindcss, shadcn/ui, lucide-react, clsx, and other TypeScript utilities.
+
+---
+## ✅ Dataset Information
+
+This project does not rely on any external or pre-built datasets. All data is provided dynamically by users at runtime when they upload their documents. The system processes documents in **PDF, DOCX, and TXT** formats.
+
+---
+
+### **Source of Data**
+- Documents are uploaded by users through the web interface.
+- Files are stored temporarily in the directory:  
+  **`/Backend/temp_uploads/`**
+- No document is permanently stored unless explicitly chosen by the user.
+
+---
+
+### **Data Size**
+- File size varies depending on user uploads.
+- The system is optimized to handle both small and large documents using chunking and semantic indexing.
+
+---
+
+### **Preprocessing Steps Applied**
+Each uploaded document follows a structured preprocessing pipeline:
+
+#### **1. Text Extraction**
+- `pdfplumber` for PDF parsing  
+- `python-docx` for DOCX parsing  
+- Standard text loaders for TXT files  
+
+#### **2. Cleaning & Normalization**
+- Removal of special characters  
+- Standardization of whitespace  
+- Basic text normalization to improve chunk quality  
+
+#### **3. Chunking into Semantic Units**
+- Document split into meaningful segments  
+- Overlapping window strategy to maintain context  
+- Chunk sizes tuned for efficient retrieval and LLM constraints  
+
+#### **4. Embedding Generation**
+Embeddings generated via one of the following:
+- `sentence-transformers/all-MiniLM-L6-v2`
+- `hkunlp/instructor-xl` (optional for higher accuracy)
+
+#### **5. Vector Indexing**
+- Chunks are stored in a **ChromaDB** collection  
+- Metadata stored with each entry:
+  - `doc_id`
+  - `session_id`
+
+---
+
+This preprocessing pipeline ensures high-quality semantic search, accurate retrieval, and grounded responses formatted by the LLM.
+
+<img width="546" height="742" alt="image" src="https://github.com/user-attachments/assets/87350c20-4288-44e5-a531-eb43cde42791" />
 
 ---
 
