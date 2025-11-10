@@ -188,21 +188,17 @@ npx shadcn-ui@latest add button
 
 This project does not rely on any external or pre-built datasets. All data is provided dynamically by users at runtime when they upload their documents. The system processes documents in **PDF, DOCX, and TXT** formats.
 
----
-
 ### **Source of Data**
 - Documents are uploaded by users through the web interface.
 - Files are stored temporarily in the directory:  
   **`/Backend/temp_uploads/`**
 - No document is permanently stored unless explicitly chosen by the user.
 
----
 
 ### **Data Size**
 - File size varies depending on user uploads.
 - The system is optimized to handle both small and large documents using chunking and semantic indexing.
 
----
 
 ### **Preprocessing Steps Applied**
 Each uploaded document follows a structured preprocessing pipeline:
@@ -232,8 +228,6 @@ Embeddings generated via one of the following:
 - Metadata stored with each entry:
   - `doc_id`
   - `session_id`
-
----
 
 This preprocessing pipeline ensures high-quality semantic search, accurate retrieval, and grounded responses formatted by the LLM.
 
