@@ -251,6 +251,39 @@ This preprocessing pipeline ensures high-quality semantic search, accurate retri
 4. View highlighted document chunks with confident LLM-generated answers.
 5. Click **📄 Summarize Document** to generate a clean bullet-point summary.
 
+
+Below is an example illustrating how the Document Intelligence Assistant processes a document, understands a user query, and generates grounded, context-aware responses.
+
+---
+
+### 📘 Sample Input Document
+
+**File:** *“AI in Healthcare.pdf”*
+
+**Content (excerpt):**
+> “Although AI is transforming medical diagnostics, several challenges remain, including regulatory compliance, patient data privacy, limited availability of annotated medical datasets, and the high computational resources required for training large models.”
+
+### ❓ Sample User Query
+
+What are the main challenges mentioned?
+
+### ✅ Expected Output
+
+Based on semantic retrieval of the most relevant chunks and LLM-based reasoning, the system would generate a structured answer similar to the following:
+
+#### **Answer**
+The document highlights several key challenges associated with the use of AI in healthcare:
+
+- **Regulatory compliance issues**  
+- **Data privacy and protection concerns**  
+- **Limited availability of high-quality, annotated medical datasets**  
+- **High computational costs** for training and deploying advanced AI models  
+
+### 🧩 Supporting Evidence (Retrieved Chunks)
+
+The assistant also returns the document segments used to answer the query, along with the confidence score:
+
+
 ---
 
 ## 🌟 Advanced Features
