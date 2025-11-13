@@ -236,6 +236,12 @@ This preprocessing pipeline ensures high-quality semantic search, accurate retri
 
 ---
 
+## Architecture Flow Diagram
+
+<img width="600" height="600" alt="📄 Document Intelligence Assistant - visual selection (1)" src="https://github.com/user-attachments/assets/eb5b1c16-18b3-4b7e-9c79-d83d88380b80" />
+
+> “This flow diagram shows how the Document Intelligence Assistant processes uploaded documents through splitting, embedding, retrieval, and LLM reasoning to generate accurate, context-grounded answers.”
+---
 ## 🧪 Usage
 
 1. Open the web interface.
